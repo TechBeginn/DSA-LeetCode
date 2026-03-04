@@ -31,15 +31,26 @@ class Solution {
             prev= curr;
             curr= next;
         }
+        
         ListNode right= prev;
         ListNode left= head;
+
+        boolean result= true;
         while( right != null && left!= null){
             if(right.val != left.val){
-                return false;
+                result= false;
             }
             right = right.next;
             left= left.next;
         }
-        return true;
+        curr= prev;
+        prev= null;
+        while(curr != null){
+            next= curr.next;
+            curr.next= prev;
+            prev= curr;
+            curr= next;
+        }
+        return result;
     }
 }
