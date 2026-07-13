@@ -2,18 +2,18 @@ class Solution {
     public int pivotIndex(int[] nums) {
         int n = nums.length;
         int start =0;
-        while(start<n){
-            int sumR=0, sumL=0;
-            for(int i=start +1; i<n; i++){
-                sumR += nums[i];
+        int sum=0;
+        int Rsum=0, Lsum=0;
+
+        for(int i=0; i<n; i++){
+            sum += nums[i];
+        }
+        for(int i=0; i<n; i++){
+            Rsum = sum - Lsum - nums[i];
+            if(Rsum == Lsum){
+                return i;
             }
-            for(int i=0; i<start; i++){
-                sumL += nums[i];
-            }
-            if(sumL == sumR){
-                return start;
-            }
-            start++;
+            Lsum += nums[i];
         }
         return -1;
     }
