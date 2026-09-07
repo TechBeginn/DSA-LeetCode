@@ -6,8 +6,9 @@ class Solution {
 
         for(int i=0; i<k; i++){
             sum += nums[i];
-            max= sum/k;
         }
+        avg = sum/k;
+        max = Math.max(max, avg);
         for(int i=0; i<nums.length-k; i++){
             sum = sum - nums[i] + nums[i+k];
             avg = sum/k;
